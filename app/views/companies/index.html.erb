@@ -1,0 +1,9 @@
+<h1>Company index</h1>
+
+<p>Here are All the companies</p>
+
+<ul>
+	<% @companies.each do |company| %>
+		<li><%= link_to company.name,company %></li>
+	<% end %>
+</ul>

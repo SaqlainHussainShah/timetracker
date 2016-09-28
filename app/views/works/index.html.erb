@@ -1,0 +1,8 @@
+<h1>Work index</h1>
+<p>List of work</p>
+<ul>
+	<% @works.each do |work| %>
+	<li><%= link_to work.datetimeperformed, work %></li>
+
+	<% end %>
+</ul>

@@ -1,0 +1,7 @@
+<h1>Projects index</h1>
+<p>Here is List of all projects</p>
+<ul>
+	<% @projects.each do |project|%>
+	<li><%= link_to project.name,project %></li>
+	<% end %>
+</ul>
