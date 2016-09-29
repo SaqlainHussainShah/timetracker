@@ -3,5 +3,32 @@
 	<p>Company: <%= @project.company.name %></p>
 	<p>Default rate: <%=@project.default_rate %></p>
 	<p><%= @project.slug %> </p>
+	<p>Owner: <%= @project.user %></p>
 
-	<p> <%= link_to 'All Projects', projects_path %></p>
+<p><%= link_to "Edit project", edit_project_path(@project) %></p>
+
+<div class="remoteform">
+	<h2>Add Work</h2>
+	<%= render partial: 'works/form', locals: {doajax: true} %>
+</div>
+
+	<% if @project.works.size>0 %>
+<table>
+	<tbody>
+		<tr id="headerrow">
+			<th>View</th>
+			<th>User</th>
+			<th>Project</th>
+			<th>Date/time</th>
+			<th>Hours</th>
+		</tr>
+		<%= render partial: "works/work", collection: @project.works %>
+	</tbody>
+</table>
+<% else %>
+	<p>No work items</p>
+<% end %>
+
+<% content_for :aside do %>
+	<% render 'sidebar' %>
+<% end %>

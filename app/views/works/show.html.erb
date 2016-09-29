@@ -3,5 +3,11 @@
 <p>User: <%= @work.user.fname %> <%= @work.user.lname %></p>
 <p>Project: <%= @work.project.name %></p>
 <p>Hours: <%= @work.hours %></p>
+<% if @work.doc %>
+	<p>Document: <%= link_to @work.doc, "/uploads/#{@work.doc}", :target=>"_blank" %></p>
+<% end %>
+<p><%= link_to 'Edit Work', edit_work_path(@work) %></p>
 
-<p> <%= link_to 'All works', works_path %></p>
+<% content_for :aside do %>
+	<% render 'sidebar' %>
+<% end %>

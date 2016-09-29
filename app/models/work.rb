@@ -2,8 +2,8 @@ class Work < ActiveRecord::Base
 	belongs_to :project
 	belongs_to :user
 
-	validates :project, presence: true
-	validates :user, presence: true
+	validates :project_id, presence: true
+	validates :user_id, presence: true
 	validates :datetimeperformed, presence: true
 	validate :date_is_in_past
 	validates :hours, numericality: { only_integer: true,
@@ -22,5 +22,10 @@ class Work < ActiveRecord::Base
 		if datetimeperformed.present? && datetimeperformed>Time.now
 			errors.add(:datetimeperformed,"Can't be in fututre")
 		end
+	end
+
+	def to_s
+		"#{user}: #{datetimeperformed.strftime('%m/%d/%Y %H:%M')} - #{hours} hours"
+		
 	end
 end

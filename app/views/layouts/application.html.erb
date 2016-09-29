@@ -3,29 +3,33 @@
 <head>
   <title>Timetracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application',  'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div id="container">
 	<header>
-		<%= link_to 'Time Tracker', root_path %>
+		<%= link_to content_tag('canvas', 'Timetracker',id:'logocanvas'),root_path %>
 		<nav>
 			<ul>
-				<% nav_items.each do |nav_item| %>
-				
+				<% nav_items.each do |nav_item| %>		
 					<%= display_nav_item(nav_item[:displaytext], nav_item[:controllername],nav_item[:linkurl]) %>
-
 				<% end %>
 			</ul>
 		</nav>
 	</header>
 	<section id="main">
 		<article>
+			<% [:notice, :alert].each do |level| %>
+				<% if flash[level] %>
+					<div class="flash <%= level %>"><%= flash[level] %> </div>
+				<% end %>
+			<% end %>
 			<%= yield %>
 		</article>
 		<aside>
+			<%= user_logged_in_msg %>
 			<%= yield :aside %>
 		</aside>
 	</section>

@@ -1,8 +1,20 @@
 <h1>Work index</h1>
-<p>List of work</p>
-<ul>
-	<% @works.each do |work| %>
-	<li><%= link_to work.datetimeperformed, work %></li>
 
-	<% end %>
-</ul>
+<p>List of work</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>View</th>
+			<th>User</th>
+			<th>Project</th>
+			<th>Date/time</th>
+			<th>Hours</th>
+		</tr>
+		<%= render partial: "work", collection: @works %>
+</tbody>
+</table>
+
+<% content_for :aside do %>
+	<% render 'sidebar' %>
+<% end %>

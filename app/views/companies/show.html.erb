@@ -1,7 +1,23 @@
-<h2>Companies Show</h2>
+<h1><%= @company.name %></h1>
 
-	<%= @company.name %>
-	<p> <%= link_to 'All companies', companies_path %></p>
+<p><%= link_to "Edit company", edit_company_path(@company) %></p>
 
+<% if @company.projects.size>0 %>
+	<table>
+		<tbody>
+			<tr>
+				<th>Project</th>
+				<th>Company</th>
+			</tr>
+			<%= render partial: "projects/project", collection: @company.projects %>
+		</tbody>
+	</table>
+<% else %>
+	<p> No projects </p>
+<% end %>
+
+<% content_for :aside do %>
+	<% render 'sidebar' %>
+<% end %>
 
 
