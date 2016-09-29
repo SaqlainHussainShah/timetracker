@@ -1,9 +1,10 @@
+
 	<h1><%= @project.name %> </h1>
 
 	<p>Company: <%= @project.company.name %></p>
 	<p>Default rate: <%=@project.default_rate %></p>
 	<p><%= @project.slug %> </p>
-	<p>Owner: <%= @project.user %></p>
+	<p>Owner: <%= @project.owner %></p>
 
 <p><%= link_to "Edit project", edit_project_path(@project) %></p>
 
@@ -27,8 +28,4 @@
 </table>
 <% else %>
 	<p>No work items</p>
-<% end %>
-
-<% content_for :aside do %>
-	<% render 'sidebar' %>
 <% end %>

@@ -10,15 +10,19 @@
    company : bentleyhoke
    email : saqlaingardezi86@gmail.com
    encrypted_password : <%= User.new.send(:password_digest,'password') %>
+   admin : true
 
   janedoe:
    fname : Jane
    lname : Doe
    company : bentleyhoke
    email : saqlaingardezi93@gmail.com
+   encrypted_password : <%= User.new.send(:password_digest,'password') %>
+   admin : false
 
   ralphmartinez:
    fname : Ralph
    lname : Martinez
    company : clientinc
    email : stfatima717@gmail.com
+   admin : true

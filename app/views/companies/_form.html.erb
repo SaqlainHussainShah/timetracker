@@ -1,6 +1,6 @@
 <% if @company.errors.any? %>
 	<div id="errors">
-		<p>Please correct the following <%= pluralize(@company.errors.count, "error") %> : </p>
+		<p>Please correct the following <%= pluralize(@company.errors.count, "error") %>:</p>
 		<ul>
 			<% @company.errors.full_messages.each do |msg| %>
 				<li><%= msg %></li>
@@ -9,12 +9,12 @@
 	</div>
 <% end %>
 
-	<%= form_for(@company) do |f| %>
+<%= form_for(@company) do |f| %>
 	<div>
 		<%= f.label :name %>
 		<%= f.text_field :name %>
 	</div>
 	<div>
-		<%= f.submit @company.new_record? ? "Create Company": 'Update Company' %>
+		<%= f.submit @company.new_record? ? "Create Company" : "Update Company"  %>
 	</div>
-	<% end %>
+<% end %>

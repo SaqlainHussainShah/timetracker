@@ -35,4 +35,17 @@ module ApplicationHelper
 		str += '</div>'
 		raw(str)
 	end
+
+	def sidebar
+		unless ['sessions', 'registrations'].include?(controller_name)
+			index_title="All #{controller_name.capitalize}"
+			index_path="#{controller_name}_path"
+			new_title="New #{controller_name.singularize.capitalize} "
+			new_path="new_#{controller_name.singularize}_path"
+			raw("Helper<ul>
+				<li>#{link_to index_title, eval(index_path)}</li>
+				<li>#{link_to new_title, eval(new_path)}</li>
+				</ul>")
+		end
+	end
 end
